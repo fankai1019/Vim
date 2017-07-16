@@ -77,6 +77,7 @@ set cindent
 "set mouse=a
 set cursorline
 set noerrorbells
+set clipboard=unnamed
 syntax on
 
 imap jk <ESC>
@@ -113,3 +114,7 @@ noremap! <expr> ,f InsertPair('{')
 noremap! <expr> ,h InsertPair('[')
 noremap! <expr> ,s InsertPair('(')
 noremap! <expr> ,u InsertPair('<')
+
+"Compile F7
+map <F7> :w <CR> :!g++ -g -std=c++14 %&& ./a.out <CR>
+map <F12> :w <CR> :source .vimrc <CR>
