@@ -81,7 +81,7 @@ syntax on
 
 imap jk <ESC>
 imap <C-L> <RIGHT>
-"nmap 1 ^ 
+nmap 1 ^h 
 
 let s:pairs={
             \'<': '>',
