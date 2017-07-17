@@ -67,7 +67,8 @@ let g:airline#extensions#tabline#enabled = 1
 "airlie theme
 let g:airline_theme='molokai'
 
-set nu
+set relativenumber
+set number
 set softtabstop=4 tabstop=4 shiftwidth=4
 set expandtab
 set autoindent
