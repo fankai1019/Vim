@@ -119,5 +119,8 @@ noremap! <expr> ,u InsertPair('<')
 map <F7> :w <CR> :!g++ -g -std=c++14 %&& ./a.out <CR>
 map <F12> :w <CR> :source .vimrc <CR>
 
-map <leader>r "+gp  
-map <leader>q "+y
+"map <leader>r "+gp  
+"map <leader>q "+y
+
+set list listchars=tab:→\ ,trail:·
+nnoremap <leader>q :bp<cr>:bd #<cr>
