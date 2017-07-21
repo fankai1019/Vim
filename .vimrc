@@ -67,14 +67,14 @@ let g:airline#extensions#tabline#enabled = 1
 "airlie theme
 let g:airline_theme='molokai'
 
-set relativenumber
+"set relativenumber
 set number
 set softtabstop=4 tabstop=4 shiftwidth=4
 set expandtab
 set autoindent
 set smartindent
 set cindent
-"set hlsearch
+set hlsearch
 "set mouse=a
 set cursorline
 set noerrorbells
@@ -82,6 +82,7 @@ set clipboard=unnamed
 syntax on
 
 imap jk <ESC>
+inoremap {<cr> {<cr>}<c-o>O<tab>
 imap <C-L> <RIGHT>
 nmap 1 ^h 
 
@@ -117,7 +118,7 @@ noremap! <expr> ,s InsertPair('(')
 noremap! <expr> ,u InsertPair('<')
 
 "Compile F7
-map <F7> :w <CR> :!g++ -g -std=c++14 %&& ./a.out <CR>
+map <F7> :w <CR> :!clear; g++ -g -std=c++14 %&& ./a.out <CR>
 map <F12> :w <CR> :source .vimrc <CR>
 
 "map <leader>r "+gp  
@@ -125,3 +126,8 @@ map <F12> :w <CR> :source .vimrc <CR>
 
 set list listchars=tab:→\ ,trail:·
 nnoremap <leader>q :bp<cr>:bd #<cr>
+
+
+"use the color scheme in tmux
+set term=screen-256color
+
