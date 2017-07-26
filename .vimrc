@@ -82,7 +82,8 @@ set clipboard=unnamed
 syntax on
 
 imap jk <ESC>
-inoremap {<cr> {<cr>}<c-o>O<tab>
+"inoremap {<cr> {<cr>}<c-o>O<tab>
+inoremap {<cr> {<cr>}<c-o>O
 imap <C-L> <RIGHT>
 nmap 1 ^h 
 
