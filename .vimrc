@@ -67,6 +67,14 @@ let g:airline#extensions#tabline#enabled = 1
 "airlie theme
 let g:airline_theme='molokai'
 
+"back space delete everything including indent
+set backspace=indent,eol,start
+"ctags
+set tags=tags;/
+let Tlist_Show_One_File=1
+let Tlist_Exit_OnlyWindow=1
+let Tlist_Use_Right_Window=1
+map<silent> <F9> :TlistToggle<cr>
 "set relativenumber
 set number
 set softtabstop=4 tabstop=4 shiftwidth=4
@@ -85,7 +93,7 @@ imap jk <ESC>
 "inoremap {<cr> {<cr>}<c-o>O<tab>
 inoremap {<cr> {<cr>}<c-o>O
 imap <C-L> <RIGHT>
-nmap 1 ^h 
+"nmap 1 ^h 
 
 let s:pairs={
             \'<': '>',
