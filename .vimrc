@@ -97,7 +97,6 @@ imap <C-L> <RIGHT>
 inoremap {<cr> {<cr>}<c-o>O
 inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
-inoremap < <><Esc>i
 "noremap! <expr> ,f InsertPair('{')
 "noremap! <expr> ,h InsertPair('[')
 "noremap! <expr> ,s InsertPair('(')
