@@ -90,6 +90,7 @@ set clipboard=unnamed
 syntax on
 
 imap jk <ESC>
+imap jj jkla
 "inoremap {<cr> {<cr>}<c-o>O<tab>
 imap <C-L> <RIGHT>
 "nmap 1 ^h 
@@ -104,6 +105,7 @@ inoremap [ []<Esc>i
 
 "Compile F7
 map <F7> :w <CR> :!clear; g++ -g -std=c++14 %&& ./a.out <CR>
+imap <F7> <Esc>:w <CR> :!clear; g++ -g -std=c++14 %&& ./a.out <CR>
 map <F12> :w <CR> :source .vimrc <CR>
 
 "map <leader>r "+gp  
