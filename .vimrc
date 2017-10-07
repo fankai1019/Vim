@@ -1,6 +1,8 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+map <silent> <leader><leader>w <Plug>(easymotion-bd-w)
+map <silent> <leader><leader>e <Plug>(easymotion-bd-e)
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
@@ -15,13 +17,31 @@ Bundle 'flazz/vim-colorschemes'
 Bundle 'bling/vim-airline'
 Bundle 'vim-airline/vim-airline-themes'
 Bundle 'tpope/vim-fugitive'
+Bundle 'easymotion/vim-easymotion'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 "color scheme
 syntax enable
-set background=dark
-colorscheme gruvbox
+"set background=dark
+"colorscheme gruvbox
+"colorscheme hybrid-light
+"colorscheme bubblegum-256-light
+"colorscheme lightcolors
+"colorscheme LightDefaultGrey
+colorscheme lightning
+"colorscheme solarized
+
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+
+
+
+
+
+
 
 set nocompatible
 "ycm config
