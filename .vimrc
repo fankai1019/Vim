@@ -1,8 +1,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-map <silent> <leader><leader>w <Plug>(easymotion-bd-w)
-map <silent> <leader><leader>e <Plug>(easymotion-bd-e)
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
@@ -18,6 +16,10 @@ Bundle 'bling/vim-airline'
 Bundle 'vim-airline/vim-airline-themes'
 Bundle 'tpope/vim-fugitive'
 Bundle 'easymotion/vim-easymotion'
+Bundle 'delimitMate.vim'
+Bundle 'ervandew/supertab'
+Bundle 'SirVer/ultisnips'
+Bundle 'junegunn/vim-easy-align'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -32,14 +34,11 @@ syntax enable
 colorscheme lightning
 "colorscheme solarized
 
+"crtlp
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
-
-
-
-
 
 
 
@@ -110,26 +109,27 @@ set clipboard=unnamed
 syntax on
 
 imap jk <ESC>
-imap jj jkla
+imap jf jkla
+"imap jf <S-Tab>
 "inoremap {<cr> {<cr>}<c-o>O<tab>
 imap <C-L> <RIGHT>
 "nmap 1 ^h 
 "brackets
 inoremap {<cr> {<cr>}<c-o>O
-inoremap ( ()<Esc>i
-inoremap [ []<Esc>i
-"noremap! <expr> ,f InsertPair('{')
-"noremap! <expr> ,h InsertPair('[')
-"noremap! <expr> ,s InsertPair('(')
-"noremap! <expr> ,u InsertPair('<')
+"inoremap ( ()<Esc>i
+"inoremap [ []<Esc>i
 
 "Compile F7
 map <F7> :w <CR> :!clear; g++ -g -std=c++14 %&& ./a.out <CR>
 imap <F7> <Esc>:w <CR> :!clear; g++ -g -std=c++14 %&& ./a.out <CR>
 map <F12> :w <CR> :source .vimrc <CR>
+imap <F12> <Esc>:w <CR> :source .vimrc <CR>
 
-"map <leader>r "+gp  
-"map <leader>q "+y
+"easy motion
+map <silent> <leader><leader>w <Plug>(easymotion-bd-w)
+map <silent> <leader><leader>e <Plug>(easymotion-bd-e)
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
 
 set list listchars=tab:→\ ,trail:·
 nnoremap <leader>q :bp<cr>:bd #<cr>
@@ -138,3 +138,19 @@ nnoremap <leader>q :bp<cr>:bd #<cr>
 "use the color scheme in tmux
 set term=screen-256color
 
+" make YCM compatible with UltiSnips (using supertab)
+ let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+ let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+ let g:SuperTabDefaultCompletionType = '<C-n>'
+
+"better key bindings for UltiSnipsExpandTrigger
+"http://codefor.life/ultisnips/
+let g:UltiSnipsSnippetsDir = "~/.vim/bundle/ultisnips/UltiSnips"
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>""
+let g:UltiSnipsEditSplit="vertical"
+nmap <leader>ue :UltiSnipsEdit<cr>
+
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
