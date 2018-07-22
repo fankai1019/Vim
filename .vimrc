@@ -25,14 +25,15 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 "color scheme
 syntax enable
-"set background=dark
+set background=dark
 "colorscheme gruvbox
 "colorscheme hybrid-light
 "colorscheme bubblegum-256-light
 "colorscheme lightcolors
 "colorscheme LightDefaultGrey
-colorscheme lightning
+"colorscheme lightning
 "colorscheme solarized
+colorscheme molokai
 
 "crtlp
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -44,7 +45,7 @@ let g:ctrlp_working_path_mode = 'ra'
 
 set nocompatible
 "ycm config
-let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
 
 "Nerdtree settings
@@ -62,8 +63,10 @@ vmap<silent><F3> ,x
 imap<silent><F3> ,x
 
 "Syntastic
-let g:syntastic_cpp_checkers= ['g++']
-let g:syntastic_cpp_compiler = 'g++'
+"let g:syntastic_cpp_checkers= ['g++']
+let g:syntastic_cpp_checkers= ['clang++']
+"let g:syntastic_cpp_compiler = 'g++'
+let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = '-std=c++11' 
 let g:ycm_show_diagnostics_ui = 0
 
@@ -88,12 +91,14 @@ let g:airline_theme='molokai'
 
 "back space delete everything including indent
 set backspace=indent,eol,start
+
 "ctags
 set tags=tags;/
 let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=1
 let Tlist_Use_Right_Window=1
 map<silent> <F9> :TlistToggle<cr>
+
 "set relativenumber
 set number
 set softtabstop=4 tabstop=4 shiftwidth=4
@@ -120,8 +125,8 @@ inoremap {<cr> {<cr>}<c-o>O
 "inoremap [ []<Esc>i
 
 "Compile F7
-map <F7> :w <CR> :!clear; g++ -g -std=c++14 %&& ./a.out <CR>
-imap <F7> <Esc>:w <CR> :!clear; g++ -g -std=c++14 %&& ./a.out <CR>
+map <F7> :w <CR> :!clear; clang++ -g -std=c++14 %&& ./a.out <CR>
+imap <F7> <Esc>:w <CR> :!clear; clang++ -g -std=c++14 %&& ./a.out <CR>
 map <F12> :w <CR> :source .vimrc <CR>
 imap <F12> <Esc>:w <CR> :source .vimrc <CR>
 
@@ -139,18 +144,18 @@ nnoremap <leader>q :bp<cr>:bd #<cr>
 set term=screen-256color
 
 " make YCM compatible with UltiSnips (using supertab)
- let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
- let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
- let g:SuperTabDefaultCompletionType = '<C-n>'
+" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+" let g:SuperTabDefaultCompletionType = '<C-n>'
 
 "better key bindings for UltiSnipsExpandTrigger
 "http://codefor.life/ultisnips/
-let g:UltiSnipsSnippetsDir = "~/.vim/bundle/ultisnips/UltiSnips"
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>""
-let g:UltiSnipsEditSplit="vertical"
-nmap <leader>ue :UltiSnipsEdit<cr>
+"let g:UltiSnipsSnippetsDir = "~/.vim/bundle/ultisnips/UltiSnips"
+"let g:UltiSnipsExpandTrigger = "<tab>"
+"let g:UltiSnipsJumpForwardTrigger = "<tab>"
+"let g:UltiSnipsJumpBackwardTrigger = "<s-tab>""
+"let g:UltiSnipsEditSplit="vertical"
+"nmap <leader>ue :UltiSnipsEdit<cr>
 
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
