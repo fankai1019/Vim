@@ -19,13 +19,18 @@ Bundle 'easymotion/vim-easymotion'
 Bundle 'delimitMate.vim'
 Bundle 'ervandew/supertab'
 Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
 Bundle 'junegunn/vim-easy-align'
+Bundle 'derekwyatt/vim-fswitch'
+Bundle 'rhysd/vim-clang-format' "need to install clang-format
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 "color scheme
 syntax enable
 set background=dark
+set cursorline
+set cursorcolumn
 "colorscheme gruvbox
 "colorscheme hybrid-light
 "colorscheme bubblegum-256-light
@@ -34,6 +39,12 @@ set background=dark
 "colorscheme lightning
 "colorscheme solarized
 colorscheme molokai
+
+"clang format settings
+let g:clang_format#auto_format = 1
+"let g:clang_format#auto_format_on_insert_leave = 1
+
+
 
 "crtlp
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -106,6 +117,7 @@ set expandtab
 set autoindent
 set smartindent
 set cindent
+set cinoptions=g-1
 set hlsearch
 "set mouse=a
 set cursorline
@@ -113,6 +125,7 @@ set noerrorbells
 set clipboard=unnamed
 syntax on
 
+"maps
 imap jk <ESC>
 imap jf jkla
 "imap jf <S-Tab>
@@ -123,12 +136,21 @@ imap <C-L> <RIGHT>
 inoremap {<cr> {<cr>}<c-o>O
 "inoremap ( ()<Esc>i
 "inoremap [ []<Esc>i
+nmap LB 0
+nmap LE $
+nmap <silent> <C-K><C-O> :FSHere<CR>
+
+
 
 "Compile F7
 map <F7> :w <CR> :!clear; clang++ -g -std=c++14 %&& ./a.out <CR>
 imap <F7> <Esc>:w <CR> :!clear; clang++ -g -std=c++14 %&& ./a.out <CR>
-map <F12> :w <CR> :source .vimrc <CR>
-imap <F12> <Esc>:w <CR> :source .vimrc <CR>
+map <F8> :w <CR> :!clear; g++ -g -std=c++14 %&& ./a.out <CR>
+imap <F8> <Esc>:w <CR> :!clear; g++ -g -std=c++14 %&& ./a.out <CR>
+map <F6> :w <CR> :!clear; g++ -g %&& ./a.out <CR>
+imap <F6> <Esc>:w <CR> :!clear; g++ -g %&& ./a.out <CR>
+map <F12> :w <CR> :source ~/.vimrc <CR>
+imap <F12> <Esc>:w <CR> :source ~/.vimrc <CR>
 
 "easy motion
 map <silent> <leader><leader>w <Plug>(easymotion-bd-w)
@@ -144,16 +166,16 @@ nnoremap <leader>q :bp<cr>:bd #<cr>
 set term=screen-256color
 
 " make YCM compatible with UltiSnips (using supertab)
-" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-" let g:SuperTabDefaultCompletionType = '<C-n>'
+ let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+ let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+ let g:SuperTabDefaultCompletionType = '<C-n>'
 
 "better key bindings for UltiSnipsExpandTrigger
 "http://codefor.life/ultisnips/
-"let g:UltiSnipsSnippetsDir = "~/.vim/bundle/ultisnips/UltiSnips"
-"let g:UltiSnipsExpandTrigger = "<tab>"
-"let g:UltiSnipsJumpForwardTrigger = "<tab>"
-"let g:UltiSnipsJumpBackwardTrigger = "<s-tab>""
+let g:UltiSnipsSnippetsDir = "~/.vim/bundle/ultisnips/UltiSnips"
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>""
 "let g:UltiSnipsEditSplit="vertical"
 "nmap <leader>ue :UltiSnipsEdit<cr>
 
