@@ -19,10 +19,13 @@ Bundle 'easymotion/vim-easymotion'
 Bundle 'delimitMate.vim'
 Bundle 'ervandew/supertab'
 Bundle 'SirVer/ultisnips'
+"preloaded snips
 Bundle 'honza/vim-snippets'
 Bundle 'junegunn/vim-easy-align'
+"switch between .h and .cpp file
 Bundle 'derekwyatt/vim-fswitch'
-Bundle 'rhysd/vim-clang-format' "need to install clang-format
+"require clang-format
+Bundle 'rhysd/vim-clang-format' 
 
 call vundle#end()            " required
 filetype plugin indent on    " required
