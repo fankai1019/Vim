@@ -26,14 +26,26 @@ Bundle 'junegunn/vim-easy-align'
 Bundle 'derekwyatt/vim-fswitch'
 "require clang-format
 Bundle 'rhysd/vim-clang-format' 
+Bundle 'kshenoy/vim-signature'
+Bundle 'majutsushi/tagbar'
+Bundle 'kien/ctrlp.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 "color scheme
 syntax enable
 set background=dark
-set cursorline
+set cursorline!
 set cursorcolumn
+
+set lazyredraw
+
+"set folder method
+"za zM zR
+set foldmethod=syntax
+"set foldmethod=indent
+set nofoldenable
+
 "colorscheme gruvbox
 "colorscheme hybrid-light
 "colorscheme bubblegum-256-light
@@ -43,38 +55,110 @@ set cursorcolumn
 "colorscheme solarized
 colorscheme molokai
 
+"sudo update-alternatives --config Vim
+set nocompatible
+
 "clang format settings
 let g:clang_format#auto_format = 1
 "let g:clang_format#auto_format_on_insert_leave = 1
 
+let g:SignatureMap = {
+        \ 'Leader'             :  "m",
+        \ 'PlaceNextMark'      :  "m,",
+        \ 'ToggleMarkAtLine'   :  "m.",
+        \ 'PurgeMarksAtLine'   :  "m-",
+        \ 'DeleteMark'         :  "dm",
+        \ 'PurgeMarks'         :  "mda",
+        \ 'PurgeMarkers'       :  "m<BS>",
+        \ 'GotoNextLineAlpha'  :  "']",
+        \ 'GotoPrevLineAlpha'  :  "'[",
+        \ 'GotoNextSpotAlpha'  :  "`]",
+        \ 'GotoPrevSpotAlpha'  :  "`[",
+        \ 'GotoNextLineByPos'  :  "]'",
+        \ 'GotoPrevLineByPos'  :  "['",
+        \ 'GotoNextSpotByPos'  :  "mn",
+        \ 'GotoPrevSpotByPos'  :  "mp",
+        \ 'GotoNextMarker'     :  "[+",
+        \ 'GotoPrevMarker'     :  "[-",
+        \ 'GotoNextMarkerAny'  :  "]=",
+        \ 'GotoPrevMarkerAny'  :  "[=",
+        \ 'ListLocalMarks'     :  "ms",
+        \ 'ListLocalMarkers'   :  "m?"
+        \ }
 
+"tagbar
+nmap <F1> :TagbarToggle<CR>
+"ctags -R --c++-kinds=+p+l+x+c+d+e+f+g+m+n+s+t+u+v --fields=+liaS --extra=+q --language-force=c++
+"change the path of tags as need be
+"set tags+=~/tags;/
+set tags=./tags;/
+let tagbar_left=1
+let tagbar_width=32
+let g:tagbar_compact=1
+nmap <Leader>tn :tnext<CR>
+nmap <Leader>tp :tprevious<CR>
+
+let g:tagbar_type_cpp = {
+    \ 'kinds' : [
+         \ 'c:classes:0:1',
+         \ 'd:macros:0:1',
+         \ 'e:enumerators:0:0', 
+         \ 'f:functions:0:1',
+         \ 'g:enumeration:0:1',
+         \ 'l:local:0:1',
+         \ 'm:members:0:1',
+         \ 'n:namespaces:0:1',
+         \ 'p:functions_prototypes:0:1',
+         \ 's:structs:0:1',
+         \ 't:typedefs:0:1',
+         \ 'u:unions:0:1',
+         \ 'v:global:0:1',
+         \ 'x:external:0:1'
+     \ ],
+     \ 'sro'        : '::',
+     \ 'kind2scope' : {
+         \ 'g' : 'enum',
+         \ 'n' : 'namespace',
+         \ 'c' : 'class',
+         \ 's' : 'struct',
+         \ 'u' : 'union'
+     \ },
+     \ 'scope2kind' : {
+         \ 'enum'      : 'g',
+         \ 'namespace' : 'n',
+         \ 'class'     : 'c',
+         \ 'struct'    : 's',
+         \ 'union'     : 'u'
+     \ }
+\ }
 
 "crtlp
 set runtimepath^=~/.vim/bundle/ctrlp.vim
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_map='<c-p>'
+let g:ctrlp_cmd='CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 
-
-
-set nocompatible
 "ycm config
 let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
 
 "Nerdtree settings
 let NERDTreeWinPos='right'
-let NERDTreeWinSize=31
+let NERDTreeWinSize=32
+let NERDTreeShowHidden=1
+let NERDTreeMinimalUI=1
 let NERDTreeChDirMode=1
+let NERDTreeAutoDeleteBuffer=1
 map <F2> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 0 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+"autocmd bufenter * if (winnr("$") == 0 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "Set leader
-let mapleader=","
-let g:mapleader=","
-nmap<silent><F3> ,x
-vmap<silent><F3> ,x
-imap<silent><F3> ,x
+let mapleader=";"
+let g:mapleader=";"
+nmap<silent><F3> ;x
+vmap<silent><F3> ;x
+imap<silent><F3> ;x
 
 "Syntastic
 "let g:syntastic_cpp_checkers= ['g++']
@@ -130,7 +214,11 @@ syntax on
 
 "maps
 imap jk <ESC>
-imap jf jkla
+imap JK <ESC>
+imap jf <Right>
+imap JF <Right>
+vmap ff <ESC>
+vmap FF <ESC>
 "imap jf <S-Tab>
 "inoremap {<cr> {<cr>}<c-o>O<tab>
 imap <C-L> <RIGHT>
@@ -142,16 +230,31 @@ inoremap {<cr> {<cr>}<c-o>O
 nmap LB 0
 nmap LE $
 nmap <silent> <C-K><C-O> :FSHere<CR>
+vnoremap <Leader>y "+y
+vnoremap <Leader>p "+p
+nmap <Leader>q :q<CR>
+nmap <Leader>w :w<CR>
+nmap <Leader>nw <C-W><C-W>
+nnoremap <Leader>lw <C-W>l
+nnoremap <Leader>hw <C-W>h
+nnoremap <Leader>kw <C-W>k
+nnoremap <Leader>jw <C-W>j
+nmap <Leader>noh :noh<CR>
+
+"vnoremap <Leader>y :%w !xclip -i -sel c
+"nmap<Leader>p :r !xclip -o -sel -c 
 
 
 
 "Compile F7
+map <F5> :w <CR> :!clear; clang++ -g %&& ./a.out <CR>
+imap <F5> <Esc>:w <CR> :!clear; clang++ -g %&& ./a.out <CR>
+map <F6> :w <CR> :!clear; g++ -g %&& ./a.out <CR>
+imap <F6> <Esc>:w <CR> :!clear; g++ -g %&& ./a.out <CR>
 map <F7> :w <CR> :!clear; clang++ -g -std=c++14 %&& ./a.out <CR>
 imap <F7> <Esc>:w <CR> :!clear; clang++ -g -std=c++14 %&& ./a.out <CR>
 map <F8> :w <CR> :!clear; g++ -g -std=c++14 %&& ./a.out <CR>
 imap <F8> <Esc>:w <CR> :!clear; g++ -g -std=c++14 %&& ./a.out <CR>
-map <F6> :w <CR> :!clear; g++ -g %&& ./a.out <CR>
-imap <F6> <Esc>:w <CR> :!clear; g++ -g %&& ./a.out <CR>
 map <F12> :w <CR> :source ~/.vimrc <CR>
 imap <F12> <Esc>:w <CR> :source ~/.vimrc <CR>
 
@@ -162,7 +265,7 @@ map  <Leader>f <Plug>(easymotion-bd-f)
 nmap <Leader>f <Plug>(easymotion-overwin-f)
 
 set list listchars=tab:→\ ,trail:·
-nnoremap <leader>q :bp<cr>:bd #<cr>
+"nnoremap <leader>q :bp<cr>:bd #<cr>
 
 
 "use the color scheme in tmux
@@ -182,5 +285,11 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>""
 "let g:UltiSnipsEditSplit="vertical"
 "nmap <leader>ue :UltiSnipsEdit<cr>
 
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
+"xmap ga <Plug>(EasyAlign)
+"nmap ga <Plug>(EasyAlign)
+
+" copy (write) highlighted text to .vimbuffer
+vmap <c-c> y:new ~/.vimbuffer<CR>VGp:x<CR> \| :!cat ~/.vimbuffer \| clip.exe <CR><CR>
+" paste from buffer
+map <C-v> :r ~/.vimbuffer<CR>
+
