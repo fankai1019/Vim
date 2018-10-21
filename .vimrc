@@ -154,11 +154,11 @@ map <F2> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "Set leader
-let mapleader=";"
-let g:mapleader=";"
-nmap<silent><F3> ;x
-vmap<silent><F3> ;x
-imap<silent><F3> ;x
+let mapleader=","
+let g:mapleader=","
+nmap<silent><F3> ,x
+vmap<silent><F3> ,x
+imap<silent><F3> ,x
 
 "Syntastic
 "let g:syntastic_cpp_checkers= ['g++']
