@@ -29,6 +29,7 @@ Bundle 'rhysd/vim-clang-format'
 Bundle 'kshenoy/vim-signature'
 Bundle 'majutsushi/tagbar'
 Bundle 'kien/ctrlp.vim'
+Bundle 'vim-scripts/Conque-GDB'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -255,6 +256,8 @@ map <F7> :w <CR> :!clear; clang++ -g -std=c++14 %&& ./a.out <CR>
 imap <F7> <Esc>:w <CR> :!clear; clang++ -g -std=c++14 %&& ./a.out <CR>
 map <F8> :w <CR> :!clear; g++ -g -std=c++14 %&& ./a.out <CR>
 imap <F8> <Esc>:w <CR> :!clear; g++ -g -std=c++14 %&& ./a.out <CR>
+map<F9> :ConqueGdb a.out <CR>
+imap<F9> <Esc>:ConqueGdb a.out <CR>
 map <F12> :w <CR> :source ~/.vimrc <CR>
 imap <F12> <Esc>:w <CR> :source ~/.vimrc <CR>
 
@@ -292,4 +295,10 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>""
 vmap <c-c> y:new ~/.vimbuffer<CR>VGp:x<CR> \| :!cat ~/.vimbuffer \| clip.exe <CR><CR>
 " paste from buffer
 map <C-v> :r ~/.vimbuffer<CR>
+
+"Conque GDB
+let g:ConqueTerm_Color = 2
+let g:ConqueTerm_CloseOnEnd = 1
+let g:ConqueTerm_StartMessages = 0
+
 
