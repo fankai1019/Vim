@@ -252,10 +252,10 @@ nmap <Leader>noh :noh<CR>
 
 
 "Compile F7
-map <F5> :w <CR> :!clear; clang++ -g %&& ./a.out <CR>
-imap <F5> <Esc>:w <CR> :!clear; clang++ -g %&& ./a.out <CR>
-map <F6> :w <CR> :!clear; g++ -g %&& ./a.out <CR>
-imap <F6> <Esc>:w <CR> :!clear; g++ -g %&& ./a.out <CR>
+map <F5> :w <CR> :!clear; clang++ -g -std=c++11 %&& ./a.out <CR>
+imap <F5> <Esc>:w <CR> :!clear; clang++ -g -std=c++11 %&& ./a.out <CR>
+map <F6> :w <CR> :!clear; g++ -g -std=c++11 %&& ./a.out <CR>
+imap <F6> <Esc>:w <CR> :!clear; g++ -g -std=c++11 %&& ./a.out <CR>
 map <F7> :w <CR> :!clear; clang++ -g -std=c++14 %&& ./a.out <CR>
 imap <F7> <Esc>:w <CR> :!clear; clang++ -g -std=c++14 %&& ./a.out <CR>
 map <F8> :w <CR> :!clear; g++ -g -std=c++14 %&& ./a.out <CR>
