@@ -196,7 +196,7 @@ set tags=tags;/
 let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=1
 let Tlist_Use_Right_Window=1
-map<silent> <F9> :TlistToggle<cr>
+map<silent> <F4> :TlistToggle<cr>
 
 "set relativenumber
 set number
@@ -220,6 +220,10 @@ imap jf <Right>
 imap JF <Right>
 vmap ff <ESC>
 vmap FF <ESC>
+map gn :bn<cr>
+map gp :bp<cr>
+map gd :bd<cr>
+
 "imap jf <S-Tab>
 "inoremap {<cr> {<cr>}<c-o>O<tab>
 imap <C-L> <RIGHT>
@@ -260,7 +264,8 @@ map<F9> :ConqueGdb a.out <CR>
 imap<F9> <Esc>:ConqueGdb a.out <CR>
 map <F12> :w <CR> :source ~/.vimrc <CR>
 imap <F12> <Esc>:w <CR> :source ~/.vimrc <CR>
-
+nnoremap <leader>u :UltiSnipsEdit<CR>
+inoremap <leader>u :UltiSnipsEdit<CR>
 "easy motion
 map <silent> <leader><leader>w <Plug>(easymotion-bd-w)
 map <silent> <leader><leader>e <Plug>(easymotion-bd-e)
