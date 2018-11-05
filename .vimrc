@@ -280,18 +280,14 @@ set list listchars=tab:→\ ,trail:·
 set term=screen-256color
 
 " make YCM compatible with UltiSnips (using supertab)
- let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
- let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
- let g:SuperTabDefaultCompletionType = '<C-n>'
-
-"better key bindings for UltiSnipsExpandTrigger
-"http://codefor.life/ultisnips/
-let g:UltiSnipsSnippetsDir = "~/.vim/bundle/ultisnips/UltiSnips"
+let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:SupertabCrMapping = 0
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>""
-"let g:UltiSnipsEditSplit="vertical"
-"nmap <leader>ue :UltiSnipsEdit<cr>
+let g:ycm_key_list_select_completion = ['<C-j>', '<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
+let g:UltiSnipsSnippetsDir = "~/.vim/bundle/ultisnips/UltiSnips"
 
 "xmap ga <Plug>(EasyAlign)
 "nmap ga <Plug>(EasyAlign)
