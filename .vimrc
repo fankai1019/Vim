@@ -38,6 +38,7 @@ syntax enable
 set background=dark
 set cursorline!
 set cursorcolumn
+set splitright
 
 set lazyredraw
 
@@ -240,10 +241,10 @@ vnoremap <Leader>p "+p
 nmap <Leader>q :q<CR>
 nmap <Leader>w :w<CR>
 nmap <Leader>nw <C-W><C-W>
-nnoremap <Leader>lw <C-W>l
-nnoremap <Leader>hw <C-W>h
-nnoremap <Leader>kw <C-W>k
-nnoremap <Leader>jw <C-W>j
+nnoremap <C-L> <C-W>l
+nnoremap <C-H> <C-W>h
+nnoremap <C-K> <C-W>k
+nnoremap <C-J> <C-W>j
 nmap <Leader>noh :noh<CR>
 
 "vnoremap <Leader>y :%w !xclip -i -sel c
@@ -301,5 +302,5 @@ map <C-v> :r ~/.vimbuffer<CR>
 let g:ConqueTerm_Color = 2
 let g:ConqueTerm_CloseOnEnd = 1
 let g:ConqueTerm_StartMessages = 0
-
+let g:ConqueGdb_SrcSplit = 'left'
 
