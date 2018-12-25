@@ -235,7 +235,7 @@ inoremap {<cr> {<cr>}<c-o>O
 "inoremap [ []<Esc>i
 nmap LB 0
 nmap LE $
-nmap <silent> <C-K><C-O> :FSHere<CR>
+nmap <silent> <C-K><C-O> :w <CR>:FSHere<CR>
 vnoremap <Leader>y "+y
 vnoremap <Leader>p "+p
 nmap <Leader>q :q<CR>
